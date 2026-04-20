@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us – Bright Institutes & Overseas</title>
+    <meta name="description"
+        content="Get in touch with Bright Institutes for visa services, study abroad guidance, Ausbildung programs, and language training.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header id="navbar" class="navbar"></header>
+    <main class="page-content">
+
+        <!-- Hero -->
+        <section class="py-20 bg-primary text-white relative overflow-hidden"
+            style="min-height:500px; display:flex; align-items:center;">
+            <div class="absolute inset-0"
+                style="background: url('assets/images/hero/hero4.jpeg') center/cover no-repeat;"></div>
+            <div class="absolute inset-0"
+                style="background: radial-gradient(ellipse at top right,hsl(221,83%,53%,0.3),transparent 60%),radial-gradient(ellipse at bottom left,hsl(221,83%,53%,0.2),transparent 60%), rgba(17,24,39,0.55);">
+            </div>
+            <div class="container relative text-center">
+                <span class="badge mb-4">Contact Us</span>
+                <h1 class="text-4xl lg:text-6xl font-extrabold leading-tight mb-4">Get In Touch</h1>
+                <p class="text-lg text-white-70 max-w-3xl mx-auto">Have questions? We're here to help you take the next
+                    step in your journey.</p>
+            </div>
+        </section>
+
+        <!-- Contact Cards -->
+        <section class="py-20 fade-in">
+            <div class="container grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                <div class="card p-6 text-center">
+                    <div class="icon-box icon-box-secondary-ghost mx-auto mb-4"><svg class="icon" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                        </svg></div>
+                    <h3 class="font-bold text-lg mb-2">Phone</h3>
+                    <a href="tel:+919963222881" class="text-sm text-muted-foreground block">+91-9963222881</a>
+                    <a href="tel:+919963222881" class="text-sm text-muted-foreground block">+91-7816001097</a>
+                </div>
+                <div class="card p-6 text-center">
+                    <div class="icon-box icon-box-secondary-ghost mx-auto mb-4"><svg class="icon" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2">
+                            <rect width="20" height="16" x="2" y="4" rx="2" />
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                        </svg></div>
+                    <h3 class="font-bold text-lg mb-2">Email</h3>
+                    <a href="mailto:info@brightinstitutes.in"
+                        class="text-sm text-muted-foreground block">info@brightinstitutes.in</a>
+                </div>
+                <div class="card p-6 text-center">
+                    <div class="icon-box icon-box-secondary-ghost mx-auto mb-4"><svg class="icon" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg></div>
+                    <h3 class="font-bold text-lg mb-2">Visit Us</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-secondary mb-1">Branch Office</h4>
+                            <p class="text-sm text-muted-foreground">3rd Floor A Block, Synosoft Building, Lakdi ka pool Hyderabad. Pin code: 500 004. T.S. India.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-secondary mb-1">Head Office</h4>
+                            <p class="text-sm text-muted-foreground">Edi bazar Santosh nagar Hyderabad..500 023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form + Map -->
+        <section class="py-20 bg-muted fade-in">
+            <div class="container flex flex-col lg:flex-row gap-12">
+                <div class="lg:flex-1">
+                    <h2 class="text-3xl font-extrabold mb-6">Send Us a Message</h2>
+                    <form id="contactForm" class="space-y-4">
+                        <div>
+                            <label class="form-label block mb-2">Full Name</label>
+                            <input type="text" id="contactName" class="form-input" placeholder="Your full name"
+                                required>
+                        </div>
+                        <div>
+                            <label class="form-label block mb-2">Email</label>
+                            <input type="email" id="contactEmail" class="form-input" placeholder="your@email.com"
+                                required>
+                        </div>
+                        <div>
+                            <label class="form-label block mb-2">Phone</label>
+                            <input type="tel" id="contactPhone" class="form-input" placeholder="+91-XXXXXXXXXX">
+                        </div>
+                        <div>
+                            <label class="form-label block mb-2">Service Interested In</label>
+                            <select id="contactService" class="form-input">
+                                <option>Ausbildung Programs</option>
+                                <option>Study Abroad</option>
+                                <option>Language Training</option>
+                                <option>Visa Services</option>
+                                <option>Healthcare / Nursing</option>
+                                <option>Air Ticket Booking</option>
+                                <option>Hajj & Umrah</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label block mb-2">Message</label>
+                            <textarea id="contactMessage" class="form-input" rows="4"
+                                placeholder="Tell us about your goals..."></textarea>
+                        </div>
+                        <button type="submit" id="contactSubmitBtn" class="btn btn-primary btn-lg w-full">Send
+                            Message</button>
+                        <!-- Toast notification -->
+                        <div id="formToast"
+                            style="display:none; margin-top:1rem; padding:1rem 1.25rem; border-radius:0.75rem; font-size:0.95rem; font-weight:600; text-align:center; transition:all 0.4s ease;">
+                        </div>
+                    </form>
+                </div>
+                <div class="lg:flex-1">
+                    <div class="map-frame">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3807.6043!2d78.4578!3d17.3616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDIxJzQxLjgiTiA3OMKwMjcnMjguMSJF!5e0!3m2!1sen!2sin!4v1"
+                            allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <footer id="footer" class="footer"></footer>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script>
+        // ─── EmailJS Integration ───
+        // REPLACE these with your actual EmailJS credentials:
+        const EMAILJS_PUBLIC_KEY = 'seGnPom-ZaUYE10Ex';
+        const EMAILJS_SERVICE_ID = 'service_divs857';
+        const EMAILJS_TEMPLATE_ID = 'template_de3f1ed';
+
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+
+        document.getElementById('contactForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('contactSubmitBtn');
+            const toast = document.getElementById('formToast');
+            const originalText = btn.textContent;
+
+            // Disable button & show loading state
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+            btn.style.opacity = '0.7';
+            btn.style.cursor = 'not-allowed';
+
+            // Collect form values
+            const params = {
+                name: document.getElementById('contactName').value.trim(),
+                email: document.getElementById('contactEmail').value.trim(),
+                phone: document.getElementById('contactPhone').value.trim(),
+                service: document.getElementById('contactService').value,
+                message: document.getElementById('contactMessage').value.trim(),
+            };
+
+            try {
+                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
+
+                // Show success toast
+                toast.textContent = 'Message sent successfully ✅';
+                toast.style.display = 'block';
+                toast.style.background = 'rgba(34, 197, 94, 0.15)';
+                toast.style.color = '#22c55e';
+                toast.style.border = '1px solid rgba(34, 197, 94, 0.3)';
+
+                // Reset form
+                this.reset();
+            } catch (error) {
+                // Show error toast
+                toast.textContent = 'Failed to send message ❌ Please try again.';
+                toast.style.display = 'block';
+                toast.style.background = 'rgba(239, 68, 68, 0.15)';
+                toast.style.color = '#ef4444';
+                toast.style.border = '1px solid rgba(239, 68, 68, 0.3)';
+                console.error('EmailJS Error:', error);
+            } finally {
+                // Re-enable button
+                btn.disabled = false;
+                btn.textContent = originalText;
+                btn.style.opacity = '1';
+                btn.style.cursor = 'pointer';
+
+                // Auto-hide toast after 5 seconds
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+
+</html>

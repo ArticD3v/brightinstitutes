@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Abroad – Bright Institutes & Overseas</title>
+    <meta name="description"
+        content="Study abroad in Australia, USA, Germany, UK, Europe, or Canada with expert guidance from Bright Institutes.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header id="navbar" class="navbar"></header>
+    <main class="page-content" id="studyContent">
+        <div class="container py-20 text-center">
+            <p class="text-muted-foreground">Loading...</p>
+        </div>
+    </main>
+    <footer id="footer" class="footer"></footer>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slug = getParam('country');
+            const country = studyCountries.find(c => c.slug === slug);
+            if (!country) { window.location.href = '404.html'; return; }
+
+            document.title = `${country.name} – Bright Institutes & Overseas`;
+            const mc = document.getElementById('studyContent');
+            const otherDest = studyCountries.filter(c => c.slug !== slug);
+
+            const imageMap = {
+                'australia': 'australia.jpg',
+                'usa': 'usa.jpeg',
+                'germany': 'germany.jpg',
+                'uk': 'uk.jpeg',
+                'europe': 'europe.jpeg',
+                'canada': 'canada.jpeg',
+                'russia': 'russia.jpeg',
+                'new-zealand': 'new-zealand.png'
+            };
+            const flagMap = {
+                'australia': 'assets/images/icons/australia.png',
+                'usa': 'assets/images/icons/united-states-of-america.png',
+                'germany': 'assets/images/icons/germany.png',
+                'uk': 'assets/images/icons/united-kingdom.png',
+                'europe': 'assets/images/icons/european.png',
+                'canada': 'assets/images/icons/canada.png',
+                'russia': 'assets/images/icons/russia.png',
+                'new-zealand': 'assets/images/icons/newzealand.png'
+            };
+            const heroImage = imageMap[country.slug] || 'hero3.jpg';
+
+            mc.innerHTML = `
+        <!-- Hero -->
+        <section class="py-20 bg-primary text-white relative overflow-hidden" style="min-height:500px; display:flex; align-items:center;">
+          <div class="absolute inset-0" style="background: url('assets/images/hero/${heroImage}') center/cover no-repeat;"></div>
+          <div class="absolute inset-0" style="background: radial-gradient(ellipse at top right,hsl(221,83%,53%,0.3),transparent 60%),radial-gradient(ellipse at bottom left,hsl(221,83%,53%,0.2),transparent 60%), rgba(17,24,39,0.55);"></div>
+          <div class="container relative text-center">
+            <span class="badge mb-4">Study Abroad</span>
+            <h1 class="text-4xl lg:text-6xl font-extrabold leading-tight mb-4">${country.name}</h1>
+            <p class="text-lg text-white-70 max-w-3xl mx-auto">${country.shortDescription}</p>
+            <a href="contact.html" class="btn btn-secondary btn-lg mt-8">Get Started</a>
+          </div>
+        </section>
+
+        <!-- Content -->
+        <section class="py-20">
+          <div class="container flex flex-col lg:flex-row gap-12">
+            <div class="lg:flex-2">
+              <div class="space-y-4 text-muted-foreground leading-relaxed mb-12 fade-in">
+                ${country.fullDescription.map(p => `<p>${p}</p>`).join('')}
+              </div>
+
+              <!-- Visa Process -->
+              <div class="fade-in">
+                <span class="badge mb-4">Visa Process</span>
+                <h2 class="text-2xl font-extrabold mb-8">${country.visaProcessTitle}</h2>
+                <div class="vertical-journey space-y-0">
+                  ${country.visaSteps.map((s, i) => `
+                    <div class="vertical-step">
+                      <div class="vertical-step-line">
+                        <div class="vertical-step-dot">${i + 1}</div>
+                        ${i < country.visaSteps.length - 1 ? '<div class="vertical-step-connector"></div>' : ''}
+                      </div>
+                      <div class="pb-8"><h4 class="font-bold">${s.title}</h4><p class="text-sm text-muted-foreground">${s.description}</p></div>
+                    </div>`).join('')}
+                </div>
+              </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:flex-1">
+              <div class="sidebar-sticky space-y-6">
+                <div class="card p-6">
+                  <h3 class="font-bold text-lg mb-4">Free Consultation</h3>
+                  <p class="text-sm text-muted-foreground mb-4">Get expert guidance on studying abroad.</p>
+                  <a href="contact.html" class="btn btn-primary btn-md w-full mb-3">Contact Us</a>
+                  <a href="tel:+919963222881" class="btn btn-outline btn-md w-full">Call Now</a>
+                </div>
+                <div class="card p-6">
+                  <h3 class="font-bold text-lg mb-4">Other Destinations</h3>
+                  <div class="space-y-2">
+                    ${otherDest.map(d => `<a href="study-abroad.html?country=${d.slug}" class="flex items-center gap-3 p-3 rounded-lg transition-colors" style="text-decoration:none;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'"><div style="width:2rem;height:2rem;border-radius:50%;overflow:hidden;flex-shrink:0;"><img src="${flagMap[d.slug] || ''}" alt="${d.name} flag" style="width:100%;height:100%;object-fit:cover;"></div><span class="text-sm font-semibold">${d.name.replace('Study In ', '')}</span></a>`).join('')}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-20 fade-in">
+          <div class="container">
+            <div class="cta-rounded text-center text-white py-16 px-8">
+              <div class="glow-1"></div><div class="glow-2"></div>
+              <div class="relative" style="z-index:1;">
+                <h2 class="text-3xl lg:text-5xl font-extrabold mb-4">Ready to ${country.name}?</h2>
+                <p class="text-lg text-white-70 mb-8 max-w-2xl mx-auto">Let us help you secure your admission and visa.</p>
+                <a href="contact.html" class="btn btn-secondary btn-lg">Get Started</a>
+              </div>
+            </div>
+          </div>
+        </section>`;
+
+            initScrollReveal();
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ausbildung Program – Bright Institutes & Overseas</title>
+    <meta name="description"
+        content="Explore Ausbildung vocational training programs in Germany with Bright Institutes.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header id="navbar" class="navbar"></header>
+    <main class="page-content" id="programContent">
+        <div class="container py-20 text-center">
+            <p class="text-muted-foreground">Loading program...</p>
+        </div>
+    </main>
+    <footer id="footer" class="footer"></footer>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slug = getParam('slug');
+            const prog = ausbildungPrograms.find(p => p.slug === slug);
+            if (!prog) { window.location.href = '404.html'; return; }
+
+            document.title = `${prog.title} – Ausbildung in Germany | Bright Institutes`;
+            const mc = document.getElementById('programContent');
+            const otherProgs = ausbildungPrograms.filter(p => p.slug !== slug).slice(0, 6);
+            const progIconMap = {
+                'radiology-assistant': 'assets/images/icons/radiology.png',
+                'medical-assistant': 'assets/images/icons/medical.png',
+                'nursing': 'assets/images/icons/nurse.png',
+                'electrical-engineer': 'assets/images/icons/electrical-engineering.png',
+                'mechanic': 'assets/images/icons/mechanic.png',
+                'automotive-mechatronic': 'assets/images/icons/automotive.png',
+                'mechatronics-electronics': 'assets/images/icons/mechatronics.png',
+                'bakers': 'assets/images/icons/baker.png',
+                'food-processing': 'assets/images/icons/food-processing.png',
+                'logistics': 'assets/images/icons/logistics.png',
+                'truck-drivers': 'assets/images/icons/driver.png',
+            };
+            const chk = '<svg class="icon-sm" style="color:hsl(142,71%,35%);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>';
+            
+            const imageMap = {
+                'radiology-assistant': 'radiology-assistant.jpeg',
+                'medical-assistant': 'medical-assistant.jpeg',
+                'nursing': 'nursing.webp',
+                'electrical-engineer': 'electrical-engineer.jpeg',
+                'mechanic': 'mechanic.jpg',
+                'automotive-mechatronic': 'mechanic.jpg',
+                'mechatronics-electronics': 'mechatronics-electronics.jpeg',
+                'bakers': 'bakers.jpg',
+                'food-processing': 'food-processing..jpg',
+                'logistics': 'logistics.jpeg',
+                'truck-drivers': 'truck-drivers.jpg'
+            };
+            const heroImage = imageMap[prog.slug] || 'hero1.webp';
+
+            mc.innerHTML = `
+        <!-- Hero -->
+        <section class="py-20 bg-primary text-white relative overflow-hidden" style="min-height:500px; display:flex; align-items:center;">
+          <div class="absolute inset-0" style="background: url('assets/images/hero/${heroImage}') center/cover no-repeat;"></div>
+          <div class="absolute inset-0" style="background: radial-gradient(ellipse at top right,hsl(221,83%,53%,0.3),transparent 60%),radial-gradient(ellipse at bottom left,hsl(221,83%,53%,0.2),transparent 60%), rgba(17,24,39,0.55);"></div>
+          <div class="container relative text-center">
+            <span class="badge mb-4">Ausbildung Program</span>
+            <h1 class="text-4xl lg:text-6xl font-extrabold text-white leading-tight mb-4">${prog.title}</h1>
+            <p class="text-lg text-white-70 max-w-3xl mx-auto">${prog.description}</p>
+            <a href="contact.html" class="btn btn-secondary btn-lg mt-8">Apply Now</a>
+          </div>
+        </section>
+
+        <!-- Content -->
+        <section class="py-20">
+          <div class="container flex flex-col lg:flex-row gap-12">
+            <div class="lg:flex-2">
+              <!-- Overview -->
+              <div class="mb-12 fade-in">
+                <span class="badge mb-4">Overview</span>
+                <h2 class="text-2xl font-extrabold mb-4">Program Overview</h2>
+                <p class="text-muted-foreground leading-relaxed">${prog.overview}</p>
+              </div>
+
+              <!-- Quick Facts -->
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12 fade-in">
+                <div class="card p-6 text-center"><div class="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">Stipend</div><div class="font-extrabold" style="color:var(--secondary);">${prog.stipend}</div></div>
+                <div class="card p-6 text-center"><div class="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">Post-Training Salary</div><div class="font-extrabold" style="color:var(--secondary);">${prog.postTrainingSalary}</div></div>
+                <div class="card p-6 text-center"><div class="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">Accommodation</div><div class="font-extrabold text-sm" style="color:var(--secondary);">${prog.accommodation}</div></div>
+              </div>
+
+              <!-- Benefits -->
+              <div class="mb-12 fade-in">
+                <h3 class="text-xl font-extrabold mb-6">Benefits</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  ${prog.benefits.map(b => `<div class="flex items-start gap-3 p-3 bg-muted rounded-xl"><span>${chk}</span><span class="text-sm">${b}</span></div>`).join('')}
+                </div>
+              </div>
+
+              <!-- Eligibility -->
+              <div class="mb-12 fade-in">
+                <h3 class="text-xl font-extrabold mb-6">Eligibility</h3>
+                <div class="grid grid-cols-2 gap-4">
+                  ${prog.eligibility.map(e => `<div class="card p-4"><div class="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">${e.label}</div><div class="font-semibold">${e.value}</div></div>`).join('')}
+                </div>
+              </div>
+
+              <!-- Inclusions -->
+              <div class="mb-12 fade-in">
+                <h3 class="text-xl font-extrabold mb-6">Program Inclusions</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  ${programInclusions.map(inc => `<div class="flex items-center gap-3 p-3 bg-muted rounded-xl"><span>${chk}</span><span class="text-sm">${inc}</span></div>`).join('')}
+                </div>
+              </div>
+
+              <!-- Journey -->
+              <div class="fade-in">
+                <h3 class="text-xl font-extrabold mb-6">Candidate Journey</h3>
+                <div class="vertical-journey space-y-0">
+                  ${candidateJourney.map((s, i) => `
+                    <div class="vertical-step">
+                      <div class="vertical-step-line">
+                        <div class="vertical-step-dot">${i + 1}</div>
+                        ${i < candidateJourney.length - 1 ? '<div class="vertical-step-connector"></div>' : ''}
+                      </div>
+                      <div class="pb-8"><h4 class="font-bold">${s.title}</h4><p class="text-sm text-muted-foreground">${s.description}</p></div>
+                    </div>`).join('')}
+                </div>
+              </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:flex-1">
+              <div class="sidebar-sticky space-y-6">
+                <div class="card p-6">
+                  <h3 class="font-bold text-lg mb-4">Quick Apply</h3>
+                  <p class="text-sm text-muted-foreground mb-4">Interested in this program? Contact us for a free consultation.</p>
+                  <a href="contact.html" class="btn btn-primary btn-md w-full mb-3">Apply Now</a>
+                  <a href="tel:+919963222881" class="btn btn-outline btn-md w-full">Call Us</a>
+                </div>
+                <div class="card p-6">
+                  <h3 class="font-bold text-lg mb-4">Other Programs</h3>
+                  <div class="space-y-2">
+                    ${otherProgs.map(p => `<a href="program.html?slug=${p.slug}" class="flex items-center gap-3 p-3 rounded-lg transition-colors" style="text-decoration:none;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'"><div style="width:2rem;height:2rem;border-radius:50%;overflow:hidden;flex-shrink:0;"><img src="${progIconMap[p.slug] || ''}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover;"></div><span class="text-sm font-semibold">${p.title}</span></a>`).join('')}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="py-20 fade-in">
+          <div class="container">
+            <div class="cta-rounded text-center text-white py-16 px-8">
+              <div class="glow-1"></div><div class="glow-2"></div>
+              <div class="relative" style="z-index:1;">
+                <h2 class="text-3xl lg:text-5xl font-extrabold mb-4">Ready to Start Your ${prog.title} Career?</h2>
+                <p class="text-lg text-white-70 mb-8 max-w-2xl mx-auto">Take the first step towards your future in Germany. Contact us today.</p>
+                <a href="contact.html" class="btn btn-secondary btn-lg">Get Started</a>
+              </div>
+            </div>
+          </div>
+        </section>`;
+
+            initScrollReveal();
+        });
+    </script>
+</body>
+
+</html>

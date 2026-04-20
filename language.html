@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Course – Bright Institutes & Overseas</title>
+    <meta name="description"
+        content="Expert language training in German, French, IELTS, PTE, Arabic, and Duolingo at Bright Institutes in Hyderabad.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header id="navbar" class="navbar"></header>
+    <main class="page-content" id="langContent">
+        <div class="container py-20 text-center">
+            <p class="text-muted-foreground">Loading...</p>
+        </div>
+    </main>
+    <footer id="footer" class="footer"></footer>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slug = getParam('slug');
+            const course = languageCourses.find(c => c.slug === slug);
+            if (!course) { window.location.href = '404.html'; return; }
+
+            document.title = `${course.title} – Bright Institutes & Overseas`;
+            const mc = document.getElementById('langContent');
+            const otherCourses = languageCourses.filter(c => c.slug !== slug);
+            const langIconMap = {
+                'german': 'assets/images/icons/germany.png',
+                'french': 'assets/images/icons/france.png',
+                'ielts': 'assets/images/icons/eng.png',
+                'pte': 'assets/images/icons/eng.png',
+                'arabic': 'assets/images/icons/arabic.png',
+                'duolingo': 'assets/images/icons/duolingo.webp',
+            };
+            const chk = '<svg class="icon-sm" style="color:hsl(142,71%,35%);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>';
+
+            let sectionsHTML = '';
+
+            // Levels
+            if (course.levels && course.levels.length > 0) {
+                sectionsHTML += `<div class="mb-12 fade-in"><h3 class="text-xl font-extrabold mb-6">Course Levels</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-4">${course.levels.map(l => `<div class="card p-4"><h4 class="font-bold mb-1">${l.level}</h4><p class="text-sm text-muted-foreground">${l.description}</p></div>`).join('')}</div></div>`;
+            }
+
+            // Test Format
+            if (course.testFormat && course.testFormat.length > 0) {
+                sectionsHTML += `<div class="mb-12 fade-in"><h3 class="text-xl font-extrabold mb-6">Test Format</h3><div class="space-y-4">${course.testFormat.map(t => `<div class="card p-6"><h4 class="font-bold mb-2">${t.section}</h4><p class="text-sm text-muted-foreground">${t.details}</p></div>`).join('')}</div></div>`;
+            }
+
+            // Eligibility
+            if (course.eligibility && course.eligibility.length > 0) {
+                sectionsHTML += `<div class="mb-12 fade-in"><h3 class="text-xl font-extrabold mb-4">Eligibility</h3>${course.eligibilityIntro ? `<p class="text-sm text-muted-foreground mb-4">${course.eligibilityIntro}</p>` : ''}<div class="grid grid-cols-2 gap-4">${course.eligibility.map(e => `<div class="card p-4"><div class="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-1">${e.title}</div><div class="font-semibold">${e.value}</div></div>`).join('')}</div></div>`;
+            }
+
+            // Why Choose
+            if (course.whyChooseReasons && course.whyChooseReasons.length > 0) {
+                sectionsHTML += `<div class="mb-12 fade-in"><h3 class="text-xl font-extrabold mb-6">${course.whyChooseTitle || 'Why Choose This Course?'}</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-3">${course.whyChooseReasons.map(r => `<div class="flex items-center gap-3 p-3 bg-muted rounded-xl"><span>${chk}</span><span class="text-sm">${r}</span></div>`).join('')}</div></div>`;
+            }
+
+            // FAQs
+            let faqsHTML = '';
+            if (course.faqs && course.faqs.length > 0) {
+                faqsHTML = `<section class="py-20 bg-muted fade-in"><div class="container max-w-3xl"><div class="text-center mb-12"><span class="badge mb-4">FAQs</span><h2 class="text-3xl font-extrabold">Frequently Asked Questions</h2></div><div class="faq-list space-y-3">${course.faqs.map(f => `<div class="faq-item card p-6"><div class="faq-question flex justify-between items-center"><h4 class="font-bold">${f.question}</h4><svg class="icon faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div><div class="faq-answer"><p class="text-sm text-muted-foreground">${f.answer}</p></div></div>`).join('')}</div></div></section>`;
+            }
+
+            const imageMap = {
+                'german': 'german.jpeg',
+                'french': 'french.jpeg',
+                'ielts': 'ielts.jpg',
+                'pte': 'pte.jpeg',
+                'arabic': 'arabic.jpeg',
+                'duolingo': 'duolingo.jpeg'
+            };
+            const heroImage = imageMap[course.slug] || 'hero1.webp';
+
+            mc.innerHTML = `
+        <!-- Hero -->
+        <section class="py-20 bg-primary text-white relative overflow-hidden" style="min-height:500px; display:flex; align-items:center;">
+          <div class="absolute inset-0" style="background: url('assets/images/hero/${heroImage}') center/cover no-repeat;"></div>
+          <div class="absolute inset-0" style="background: radial-gradient(ellipse at top right,hsl(221,83%,53%,0.3),transparent 60%),radial-gradient(ellipse at bottom left,hsl(221,83%,53%,0.2),transparent 60%), rgba(17,24,39,0.55);"></div>
+          <div class="container relative text-center">
+            <span class="badge mb-4">Language Training</span>
+            <h1 class="text-4xl lg:text-6xl font-extrabold leading-tight mb-4">${course.title}</h1>
+            <p class="text-lg text-white-70 max-w-3xl mx-auto">${course.fullDescription[0].slice(0, 180)}...</p>
+            <a href="contact.html" class="btn btn-secondary btn-lg mt-8">Enroll Now</a>
+          </div>
+        </section>
+
+        <!-- Content -->
+        <section class="py-20">
+          <div class="container flex flex-col lg:flex-row gap-12">
+            <div class="lg:flex-2">
+              <div class="space-y-4 text-muted-foreground leading-relaxed mb-12 fade-in">
+                ${course.fullDescription.map(p => `<p>${p}</p>`).join('')}
+              </div>
+              ${sectionsHTML}
+            </div>
+            <!-- Sidebar -->
+            <div class="lg:flex-1">
+              <div class="sidebar-sticky space-y-6">
+                <div class="card p-6">
+                  <h3 class="font-bold text-lg mb-4">Enroll Now</h3>
+                  <p class="text-sm text-muted-foreground mb-4">Start your language learning journey today.</p>
+                  <a href="contact.html" class="btn btn-primary btn-md w-full mb-3">Contact Us</a>
+                  <a href="tel:+919963222881" class="btn btn-outline btn-md w-full">Call Now</a>
+                </div>
+                <div class="card p-6">
+                  <h3 class="font-bold text-lg mb-4">Other Courses</h3>
+                  <div class="space-y-2">
+                    ${otherCourses.map(c => `<a href="language.html?slug=${c.slug}" class="flex items-center gap-3 p-3 rounded-lg transition-colors" style="text-decoration:none;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'"><div style="width:2rem;height:2rem;border-radius:50%;overflow:hidden;flex-shrink:0;"><img src="${langIconMap[c.slug] || ''}" alt="${c.title}" style="width:100%;height:100%;object-fit:cover;"></div><span class="text-sm font-semibold">${c.title}</span></a>`).join('')}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        ${faqsHTML}
+
+        <!-- CTA -->
+        <section class="py-20 fade-in">
+          <div class="container">
+            <div class="cta-rounded text-center text-white py-16 px-8">
+              <div class="glow-1"></div><div class="glow-2"></div>
+              <div class="relative" style="z-index:1;">
+                <h2 class="text-3xl lg:text-5xl font-extrabold mb-4">Start Learning Today</h2>
+                <p class="text-lg text-white-70 mb-8 max-w-2xl mx-auto">Enroll in our ${course.title} and take the next step in your global career.</p>
+                <a href="contact.html" class="btn btn-secondary btn-lg">Enroll Now</a>
+              </div>
+            </div>
+          </div>
+        </section>`;
+
+            initScrollReveal();
+            initFaqAccordion();
+        });
+    </script>
+</body>
+
+</html>
