@@ -219,6 +219,7 @@ function renderNavbar() {
           <button class="nav-dropdown-btn whitespace-nowrap">Gallery ${icons.chevronDown}</button>
           <div class="nav-dropdown-menu"><div class="nav-dropdown-panel">${galleryLinks}</div></div>
         </div>
+        <a href="about.html" class="nav-link whitespace-nowrap flex-shrink-0 ${isActive('about.html')}">About Us</a>
       </nav>
 
       <div class="nav-divider"></div>
@@ -296,6 +297,7 @@ function renderNavbar() {
             <a href="#"><span class="dd-icon">${icons.globe}</span>Video Gallery</a>
           </div>
         </div>
+        <a href="about.html" class="mobile-nav-item ${isActive('about.html')}">About Us</a>
         <a href="contact.html" class="btn btn-primary btn-md w-full mt-4">Contact Us</a>
       </div>
     </div>`;

@@ -1,124 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us – Bright Institutes & Overseas</title>
-    <meta name="description"
-        content="Learn about Bright Institutes & Overseas, our mission, values, and commitment to helping students achieve their international career goals.">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us – Bright Institutes & Overseas</title>
+  <meta name="description" content="Learn about Bright Institutes & Overseas – your trusted partner for Ausbildung, study abroad, language training, and global career pathways.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .about-hero{min-height:520px;display:flex;align-items:center;position:relative;overflow:hidden}
+    .about-hero .hero-bg{position:absolute;inset:0;background:url('assets/images/hero/hero1.webp') center/cover no-repeat}
+    .about-hero .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(17,24,39,.75),rgba(37,99,235,.35))}
+    .about-hero .container{position:relative;z-index:1}
+
+    .stat-card{text-align:center;padding:2rem 1.5rem;border-radius:1rem;background:var(--card);border:1px solid var(--border);transition:transform .3s,box-shadow .3s}
+    .stat-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.08)}
+    .stat-num{font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,var(--primary),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .stat-label{font-size:.875rem;color:var(--muted-foreground);margin-top:.5rem}
+
+    .value-card{padding:2rem;border-radius:1rem;background:var(--card);border:1px solid var(--border);transition:transform .3s,box-shadow .3s}
+    .value-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,.06)}
+    .value-icon{width:3.5rem;height:3.5rem;border-radius:1rem;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;background:linear-gradient(135deg,hsl(221,83%,53%,.1),hsl(221,83%,53%,.2));color:var(--primary)}
+
+    .timeline{position:relative;padding-left:2rem}
+    .timeline::before{content:'';position:absolute;left:.75rem;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--primary),var(--secondary))}
+    .timeline-item{position:relative;margin-bottom:2rem;padding-left:1.5rem}
+    .timeline-dot{position:absolute;left:-1.6rem;top:.25rem;width:1rem;height:1rem;border-radius:50%;background:var(--secondary);border:3px solid var(--card);box-shadow:0 0 0 2px var(--secondary)}
+
+    .ceo-card{text-align:center;padding:0;border-radius:1.5rem;background:var(--card);border:1px solid var(--border);transition:transform .5s cubic-bezier(.4,0,.2,1),box-shadow .5s;position:relative;overflow:hidden}
+    .ceo-card:hover{transform:translateY(-10px);box-shadow:0 30px 60px rgba(37,99,235,.15)}
+    .ceo-card-header{position:relative;padding:2.5rem 2rem 4rem;background:linear-gradient(135deg,hsl(221,83%,53%),hsl(221,83%,40%));overflow:hidden}
+    .ceo-card-header::before{content:'';position:absolute;top:-50%;right:-30%;width:16rem;height:16rem;border-radius:50%;background:rgba(255,255,255,.06)}
+    .ceo-card-header::after{content:'';position:absolute;bottom:-40%;left:-20%;width:12rem;height:12rem;border-radius:50%;background:rgba(255,255,255,.04)}
+    .ceo-card-body{position:relative;padding:0 2rem 2.5rem;margin-top:-3.5rem;z-index:1}
+    .ceo-photo{width:8rem;height:8rem;border-radius:50%;margin:0 auto 1.25rem;overflow:hidden;border:4px solid var(--card);box-shadow:0 8px 32px rgba(0,0,0,.18);position:relative;z-index:2;transition:transform .4s cubic-bezier(.4,0,.2,1)}
+    .ceo-card:hover .ceo-photo{transform:scale(1.05)}
+    .ceo-photo img{width:100%;height:100%;object-fit:cover}
+    .ceo-name{font-size:1.5rem;font-weight:800;margin-bottom:.25rem;background:linear-gradient(135deg,hsl(221,83%,30%),hsl(221,83%,53%));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .ceo-role{display:inline-block;font-size:.75rem;font-weight:700;color:#fff;letter-spacing:.05em;text-transform:uppercase;padding:.35rem 1rem;border-radius:2rem;background:linear-gradient(135deg,var(--primary),var(--secondary));margin-bottom:1rem}
+    .ceo-qual{font-size:.8rem;color:var(--muted-foreground);margin-bottom:1.25rem;font-style:italic}
+    .ceo-divider{width:3rem;height:3px;border-radius:2px;background:linear-gradient(90deg,var(--primary),var(--secondary));margin:0 auto 1.25rem}
+    .ceo-expertise{font-size:.8125rem;color:var(--muted-foreground);line-height:1.7;margin-bottom:1.25rem;text-align:left;padding:1rem 1.25rem;border-radius:.75rem;background:linear-gradient(135deg,hsl(221,83%,97%),hsl(35,92%,97%));border:1px solid hsl(221,83%,53%,.08)}
+    .ceo-skills{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:1.25rem}
+    .ceo-skill{font-size:.7rem;font-weight:600;padding:.3rem .75rem;border-radius:2rem;background:hsl(221,83%,53%,.07);color:var(--primary);border:1px solid hsl(221,83%,53%,.12);transition:all .3s}
+    .ceo-skill:hover{background:var(--primary);color:#fff}
+    .ceo-exp{display:inline-flex;align-items:center;gap:.5rem;font-size:.8125rem;font-weight:700;color:var(--primary);padding:.5rem 1.25rem;border-radius:2rem;background:linear-gradient(135deg,hsl(221,83%,53%,.08),hsl(35,92%,58%,.08));border:1px solid hsl(221,83%,53%,.1)}
+
+    .process-timeline{position:relative;max-width:48rem;margin:0 auto}
+    .process-timeline::before{content:'';position:absolute;left:2rem;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--primary),var(--secondary),hsl(142,71%,45%));border-radius:2px}
+    @media(min-width:768px){.process-timeline::before{left:50%;transform:translateX(-50%)}}
+    .p-step{position:relative;display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:2.5rem;padding-left:4.5rem}
+    @media(min-width:768px){.p-step{padding-left:0;width:50%}.p-step:nth-child(odd){margin-left:auto;padding-left:3.5rem}.p-step:nth-child(even){margin-right:auto;padding-right:3.5rem;text-align:right;flex-direction:row-reverse}}
+    .p-dot{position:absolute;left:1rem;width:2.25rem;height:2.25rem;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.75rem;font-weight:800;z-index:2;box-shadow:0 4px 16px rgba(37,99,235,.25);transition:transform .4s,box-shadow .4s}
+    .p-step:hover .p-dot{transform:scale(1.15);box-shadow:0 6px 24px rgba(37,99,235,.35)}
+    @media(min-width:768px){.p-step:nth-child(odd) .p-dot{left:-1.125rem}.p-step:nth-child(even) .p-dot{left:auto;right:-1.125rem}}
+    .p-dot-1{background:linear-gradient(135deg,hsl(221,83%,53%),hsl(221,83%,40%))}
+    .p-dot-2{background:linear-gradient(135deg,hsl(221,83%,60%),hsl(221,83%,48%))}
+    .p-dot-3{background:linear-gradient(135deg,hsl(35,92%,50%),hsl(35,92%,42%))}
+    .p-dot-4{background:linear-gradient(135deg,hsl(35,92%,58%),hsl(35,92%,48%))}
+    .p-dot-5{background:linear-gradient(135deg,hsl(142,71%,40%),hsl(142,71%,32%))}
+    .p-dot-6{background:linear-gradient(135deg,hsl(142,71%,45%),hsl(142,71%,35%))}
+    .p-content{padding:1.5rem 1.75rem;border-radius:1rem;background:var(--card);border:1px solid var(--border);box-shadow:0 4px 20px rgba(0,0,0,.04);transition:transform .4s cubic-bezier(.4,0,.2,1),box-shadow .4s}
+    .p-step:hover .p-content{transform:translateY(-4px);box-shadow:0 12px 32px rgba(37,99,235,.08)}
+    .p-content h4{font-size:1rem;font-weight:700;margin-bottom:.375rem}
+    .p-content p{font-size:.8125rem;color:var(--muted-foreground);line-height:1.6}
+    .p-icon{width:2.5rem;height:2.5rem;border-radius:.75rem;display:flex;align-items:center;justify-content:center;margin-bottom:.75rem;flex-shrink:0}
+    @media(min-width:768px){.p-step:nth-child(even) .p-icon{margin-left:auto}}
+  </style>
 </head>
-
 <body>
-    <header id="navbar" class="navbar"></header>
-    <main class="page-content">
+  <header id="navbar" class="navbar"></header>
+  <main class="page-content">
 
-        <!-- Hero -->
-        <section class="py-20 bg-primary text-white relative overflow-hidden" style="min-height:500px; display:flex; align-items:center;">
-            <div class="absolute inset-0" style="background: url('assets/images/hero/115113396.avif') center/cover no-repeat;"></div>
-            <div class="absolute inset-0" style="background: radial-gradient(ellipse at top right,hsl(221,83%,53%,0.3),transparent 60%),radial-gradient(ellipse at bottom left,hsl(221,83%,53%,0.2),transparent 60%), rgba(17,24,39,0.55);"></div>
-            <div class="container relative text-center">
-                <span class="badge mb-4">About Us</span>
-                <h1 class="text-4xl lg:text-6xl font-extrabold leading-tight mb-4">Bright Institutes &amp; Overseas</h1>
-                <p class="text-lg text-white-70 max-w-3xl mx-auto">Your Trusted Partner for Global Education, Vocational
-                    Training, and International Career Pathways</p>
+    <!-- Hero -->
+    <section class="about-hero text-white">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="container text-center">
+        <span class="badge mb-4">About Us</span>
+        <h1 class="text-4xl lg:text-6xl font-extrabold leading-tight mb-4">Bright Institutes &amp; Overseas</h1>
+        <p class="text-lg text-white-70 max-w-3xl mx-auto mb-8">Your Trusted Partner for Global Education, Vocational Training, and International Career Pathways Since Day One</p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="contact.html" class="btn btn-secondary btn-lg">Get Started</a>
+          <a href="#our-story" class="btn btn-outline-white btn-lg">Our Story</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Our Story -->
+    <section id="our-story" class="py-20 bg-muted fade-in">
+      <div class="container flex flex-col lg:flex-row gap-16">
+        <div class="lg:flex-2">
+          <span class="badge mb-4">Our Story</span>
+          <h2 class="text-3xl lg:text-5xl font-extrabold tracking-tight mb-6">Who We Are</h2>
+          <div class="space-y-4 text-muted-foreground leading-relaxed" id="aboutStory"></div>
+        </div>
+        <div class="lg:flex-1">
+          <div class="card p-8 sidebar-sticky">
+            <h3 class="font-bold text-xl mb-6" style="color:var(--secondary);">Why Choose Us?</h3>
+            <div class="space-y-4" id="whyChooseList"></div>
+            <a href="contact.html" class="btn btn-primary btn-md w-full mt-6">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Vision Values -->
+    <section class="py-20 fade-in">
+      <div class="container text-center mb-12">
+        <span class="badge mb-4">What Drives Us</span>
+        <h2 class="text-3xl lg:text-5xl font-extrabold tracking-tight">Our Mission &amp; Values</h2>
+      </div>
+      <div class="container grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="value-card fade-in">
+          <div class="value-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
+          <h3 class="font-bold text-lg mb-3">Our Mission</h3>
+          <p class="text-sm text-muted-foreground leading-relaxed">To empower individuals with world-class education, vocational training, and career pathways that transform ambitions into reality across global markets.</p>
+        </div>
+        <div class="value-card fade-in">
+          <div class="value-icon" style="background:linear-gradient(135deg,hsl(35,92%,58%,.1),hsl(35,92%,58%,.2));color:hsl(35,92%,58%)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+          <h3 class="font-bold text-lg mb-3">Our Vision</h3>
+          <p class="text-sm text-muted-foreground leading-relaxed">To become the most trusted global consultancy, bridging the gap between skilled talent and international opportunities with integrity and excellence.</p>
+        </div>
+        <div class="value-card fade-in">
+          <div class="value-icon" style="background:linear-gradient(135deg,hsl(142,71%,35%,.1),hsl(142,71%,35%,.2));color:hsl(142,71%,35%)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <h3 class="font-bold text-lg mb-3">Our Values</h3>
+          <p class="text-sm text-muted-foreground leading-relaxed">Transparency, commitment, and quality form the foundation of everything we do — from first consultation to post-arrival support in your new home.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What We Do / Process -->
+    <section class="py-20 bg-muted fade-in">
+      <div class="container text-center mb-12">
+        <span class="badge mb-4">How It Works</span>
+        <h2 class="text-3xl lg:text-5xl font-extrabold tracking-tight">Your Journey With Us</h2>
+        <p class="text-muted-foreground mt-4 max-w-2xl mx-auto">From first consultation to career success — we guide you through every step of your international journey.</p>
+      </div>
+      <div class="process-timeline container">
+        <!-- Step 1 -->
+        <div class="p-step fade-in">
+          <div class="p-dot p-dot-1">1</div>
+          <div class="p-content">
+            <div class="p-icon" style="background:linear-gradient(135deg,hsl(221,83%,53%,.1),hsl(221,83%,53%,.2));color:var(--primary);"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <h4>Free Consultation</h4>
+            <p>We assess your profile, goals, and eligibility for the best-fit program.</p>
+          </div>
+        </div>
+        <!-- Step 2 -->
+        <div class="p-step fade-in">
+          <div class="p-dot p-dot-2">2</div>
+          <div class="p-content">
+            <div class="p-icon" style="background:linear-gradient(135deg,hsl(221,83%,60%,.1),hsl(221,83%,60%,.2));color:hsl(221,83%,53%);"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+            <h4>Program Selection</h4>
+            <p>Choose from Ausbildung, study abroad, healthcare, or skill migration pathways.</p>
+          </div>
+        </div>
+        <!-- Step 3 -->
+        <div class="p-step fade-in">
+          <div class="p-dot p-dot-3">3</div>
+          <div class="p-content">
+            <div class="p-icon" style="background:linear-gradient(135deg,hsl(35,92%,58%,.1),hsl(35,92%,58%,.2));color:hsl(35,92%,48%);"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></div>
+            <h4>Training &amp; Preparation</h4>
+            <p>Language training, document preparation, interview coaching, and cultural orientation.</p>
+          </div>
+        </div>
+        <!-- Step 4 -->
+        <div class="p-step fade-in">
+          <div class="p-dot p-dot-4">4</div>
+          <div class="p-content">
+            <div class="p-icon" style="background:linear-gradient(135deg,hsl(35,92%,50%,.1),hsl(35,92%,50%,.2));color:hsl(35,92%,42%);"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+            <h4>Visa &amp; Placement</h4>
+            <p>Complete visa documentation, employer coordination, and travel arrangements.</p>
+          </div>
+        </div>
+        <!-- Step 5 -->
+        <div class="p-step fade-in">
+          <div class="p-dot p-dot-5">5</div>
+          <div class="p-content">
+            <div class="p-icon" style="background:linear-gradient(135deg,hsl(142,71%,40%,.1),hsl(142,71%,40%,.2));color:hsl(142,71%,35%);"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></div>
+            <h4>Arrival &amp; Settlement</h4>
+            <p>Post-arrival support including accommodation, insurance, bank setup, and local orientation.</p>
+          </div>
+        </div>
+        <!-- Step 6 -->
+        <div class="p-step fade-in">
+          <div class="p-dot p-dot-6">6</div>
+          <div class="p-content">
+            <div class="p-icon" style="background:linear-gradient(135deg,hsl(142,71%,45%,.1),hsl(142,71%,45%,.2));color:hsl(142,71%,35%);"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+            <h4>Career Growth</h4>
+            <p>Ongoing career guidance and permanent residency pathway support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Leadership -->
+    <section class="py-20 fade-in">
+      <div class="container text-center mb-12">
+        <span class="badge mb-4">Leadership</span>
+        <h2 class="text-3xl lg:text-5xl font-extrabold tracking-tight">Meet Our Founders</h2>
+        <p class="text-muted-foreground mt-4 max-w-2xl mx-auto">Led by experienced professionals with a decade of expertise in global immigration and education services.</p>
+      </div>
+      <div class="container grid grid-cols-1 md:grid-cols-2 gap-8" style="max-width:52rem;">
+        <!-- CEO 1 -->
+        <div class="ceo-card fade-in">
+          <div class="ceo-card-header"></div>
+          <div class="ceo-card-body">
+            <div class="ceo-photo"><img src="assets/ceo1.jpeg" alt="Syed Abid Ali Quadri"></div>
+            <div class="ceo-name">Syed Abid Ali Quadri</div>
+            <div class="ceo-role">Co-Founder &amp; CEO</div>
+            <div class="ceo-qual">B.Com (Graduate)</div>
+            <div class="ceo-divider"></div>
+            <div class="ceo-expertise">Expert in Visit Visas, Work Permits, Permanent Residency, Student Visa, Air Ticketing, and Hajj &amp; Umrah Services</div>
+            <div class="ceo-skills">
+              <span class="ceo-skill">Visit Visas</span>
+              <span class="ceo-skill">Work Permits</span>
+              <span class="ceo-skill">PR</span>
+              <span class="ceo-skill">Student Visa</span>
+              <span class="ceo-skill">Air Tickets</span>
+              <span class="ceo-skill">Hajj &amp; Umrah</span>
             </div>
-        </section>
-
-        <!-- Highlights -->
-        <section class="py-20 fade-in">
-            <div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="card p-6 text-center">
-                    <div class="text-3xl font-extrabold" style="color:var(--secondary);">99.7%</div>
-                    <div class="text-sm text-muted-foreground mt-2">Visa Approval Rate</div>
-                </div>
-                <div class="card p-6 text-center">
-                    <div class="text-3xl font-extrabold" style="color:var(--secondary);">1,000+</div>
-                    <div class="text-sm text-muted-foreground mt-2">Students Supported</div>
-                </div>
-                <div class="card p-6 text-center">
-                    <div class="text-3xl font-extrabold" style="color:var(--secondary);">600+</div>
-                    <div class="text-sm text-muted-foreground mt-2">Currently in Germany</div>
-                </div>
-                <div class="card p-6 text-center">
-                    <div class="text-3xl font-extrabold" style="color:var(--secondary);">30+</div>
-                    <div class="text-sm text-muted-foreground mt-2">Global Destinations</div>
-                </div>
+            <div class="ceo-exp"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg> 10+ Years Experience</div>
+          </div>
+        </div>
+        <!-- CEO 2 -->
+        <div class="ceo-card fade-in">
+          <div class="ceo-card-header"></div>
+          <div class="ceo-card-body">
+            <div class="ceo-photo"><img src="assets/ceo2.png" alt="Abdul Raoof Numan"></div>
+            <div class="ceo-name">Abdul Raoof Numan</div>
+            <div class="ceo-role">Co-Founder &amp; CEO</div>
+            <div class="ceo-qual">M.Sc from Germany · B2 Certified · IT Professional</div>
+            <div class="ceo-divider"></div>
+            <div class="ceo-expertise">Expert in German Language Training, Career Counseling, and Learning Strategies. Trained numerous students and nurses with a personalized coaching approach.</div>
+            <div class="ceo-skills">
+              <span class="ceo-skill">German Training</span>
+              <span class="ceo-skill">Career Counseling</span>
+              <span class="ceo-skill">B2 Certified</span>
+              <span class="ceo-skill">IT Professional</span>
+              <span class="ceo-skill">Student Coaching</span>
             </div>
-        </section>
+            <div class="ceo-exp"><svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg> 10+ Years Experience in Germany</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!-- Story -->
-        <section class="py-20 bg-muted fade-in">
-            <div class="container flex flex-col lg:flex-row gap-16">
-                <div class="lg:flex-2">
-                    <span class="badge mb-4">Our Story</span>
-                    <h2 class="text-3xl font-extrabold mb-6">Who We Are</h2>
-                    <div class="space-y-4 text-muted-foreground leading-relaxed" id="aboutStory"></div>
-                </div>
-                <div class="lg:flex-1">
-                    <div class="card p-8 sidebar-sticky">
-                        <h3 class="font-bold text-xl mb-6" style="color:var(--secondary);">Why Choose Us?</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-start gap-3"><span style="color:hsl(142,71%,35%)"><svg class="icon"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M20 6 9 17l-5-5" />
-                                    </svg></span><span class="text-sm">Personalized Guidance & Expert Support</span>
-                            </div>
-                            <div class="flex items-start gap-3"><span style="color:hsl(142,71%,35%)"><svg class="icon"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M20 6 9 17l-5-5" />
-                                    </svg></span><span class="text-sm">99.7% Visa Approval Rate</span></div>
-                            <div class="flex items-start gap-3"><span style="color:hsl(142,71%,35%)"><svg class="icon"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M20 6 9 17l-5-5" />
-                                    </svg></span><span class="text-sm">Ethical Service Standards</span></div>
-                            <div class="flex items-start gap-3"><span style="color:hsl(142,71%,35%)"><svg class="icon"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M20 6 9 17l-5-5" />
-                                    </svg></span><span class="text-sm">End-to-End Career Pathways</span></div>
-                            <div class="flex items-start gap-3"><span style="color:hsl(142,71%,35%)"><svg class="icon"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M20 6 9 17l-5-5" />
-                                    </svg></span><span class="text-sm">Experienced Faculty & Training</span></div>
-                            <div class="flex items-start gap-3"><span style="color:hsl(142,71%,35%)"><svg class="icon"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M20 6 9 17l-5-5" />
-                                    </svg></span><span class="text-sm">Post-Arrival Support</span></div>
-                        </div>
-                        <a href="contact.html" class="btn btn-primary btn-md w-full mt-6">Contact Us</a>
-                    </div>
-                </div>
+    <!-- Testimonials -->
+    <section class="py-20 bg-muted fade-in">
+      <div class="container text-center mb-12">
+        <span class="badge mb-4">Testimonials</span>
+        <h2 class="text-3xl lg:text-5xl font-extrabold tracking-tight">What Our Students Say</h2>
+      </div>
+      <div class="container grid grid-cols-1 md:grid-cols-2 gap-6" id="aboutTestimonials"></div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 fade-in">
+      <div class="container">
+        <div class="cta-rounded text-center text-white py-16 px-8">
+          <div class="glow-1"></div>
+          <div class="glow-2"></div>
+          <div class="relative" style="z-index:1;">
+            <h2 class="text-3xl lg:text-5xl font-extrabold mb-4">Start Your Journey Today</h2>
+            <p class="text-lg text-white-70 mb-8 max-w-2xl mx-auto">Let Bright Institutes help you build a successful global career. Take the first step with a free consultation.</p>
+            <div class="flex flex-wrap gap-4 justify-center">
+              <a href="contact.html" class="btn btn-secondary btn-lg">Get In Touch</a>
+              <a href="tel:+919963222881" class="btn btn-outline-white btn-lg">Call Now</a>
             </div>
-        </section>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!-- CTA -->
-        <section class="py-20 fade-in">
-            <div class="container">
-                <div class="cta-rounded text-center text-white py-16 px-8">
-                    <div class="glow-1"></div>
-                    <div class="glow-2"></div>
-                    <div class="relative" style="z-index:1;">
-                        <h2 class="text-3xl lg:text-5xl font-extrabold mb-4">Start Your Journey Today</h2>
-                        <p class="text-lg text-white-70 mb-8 max-w-2xl mx-auto">Let Bright Institutes help you build a
-                            successful global career.</p>
-                        <a href="contact.html" class="btn btn-secondary btn-lg">Get In Touch</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+  </main>
+  <footer id="footer" class="footer"></footer>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Story
+      const story = [contactInfo.aboutText, contactInfo.aboutFull, contactInfo.mission, contactInfo.whyUs, contactInfo.training, contactInfo.closing];
+      document.getElementById('aboutStory').innerHTML = story.map(p => `<p>${p}</p>`).join('');
 
-    </main>
-    <footer id="footer" class="footer"></footer>
-    <script src="data.js"></script>
-    <script src="app.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const story = [contactInfo.aboutText, contactInfo.aboutFull, contactInfo.mission, contactInfo.whyUs, contactInfo.training, contactInfo.closing];
-            document.getElementById('aboutStory').innerHTML = story.map(p => `<p>${p}</p>`).join('');
-            initScrollReveal();
-        });
-    </script>
+      // Why Choose Us
+      const reasons = ['Personalized Guidance & Expert Support','99.7% Visa Approval Rate','Ethical Service Standards','End-to-End Career Pathways','Experienced Faculty & Training','Post-Arrival Support'];
+      document.getElementById('whyChooseList').innerHTML = reasons.map(r =>
+        `<div class="flex items-start gap-3"><span style="color:hsl(142,71%,35%)"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span><span class="text-sm">${r}</span></div>`
+      ).join('');
+
+
+
+      // Testimonials
+      document.getElementById('aboutTestimonials').innerHTML = testimonials.map(t =>
+        `<div class="card p-6 fade-in"><div class="flex gap-1 mb-4">${'<svg class="icon star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'.repeat(5)}</div><p class="text-sm text-muted-foreground leading-relaxed mb-4">"${t.text}"</p><div class="flex items-center gap-3"><div style="width:2.5rem;height:2.5rem;border-radius:50%;background:var(--secondary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;">${t.name[0]}</div><span class="font-bold text-sm">${t.name}</span></div></div>`
+      ).join('');
+
+      initScrollReveal();
+    });
+  </script>
 </body>
-
 </html>
